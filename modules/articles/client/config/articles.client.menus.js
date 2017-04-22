@@ -27,6 +27,6 @@
       title: 'Create new Article',
       state: 'admin.articles.create',
       roles: ['user']
-    });    
+    });
   }
 }());

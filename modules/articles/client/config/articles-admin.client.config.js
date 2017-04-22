@@ -16,6 +16,6 @@
     Menus.addSubMenuItem('topbar', 'admin', {
       title: 'Create new Article',
       state: 'admin.articles.create'
-    });    
+    });
   }
 }());
