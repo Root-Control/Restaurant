@@ -2,9 +2,9 @@
 
 module.exports = {
   app: {
-    title: 'MEAN.JS',
-    description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
-    keywords: 'mongodb, express, angularjs, node.js, mongoose, passport',
+    title: 'Sistema de Restaurante',
+    description: 'Sistema de gestión de restaurante, platos, parrillas.',
+    keywords: 'restaurante, pollo, parrilla',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
   },
   db: {

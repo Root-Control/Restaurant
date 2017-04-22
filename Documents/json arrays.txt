@@ -1,0 +1,14 @@
+email:
+"dsa@dsa.com"
+firstName
+:
+"hoiro"
+lastName
+:
+"dsa"
+password
+:
+"Secretsystem1@"
+username
+:
+"hiroshixd"

@@ -8,18 +8,25 @@
   menuConfig.$inject = ['menuService'];
 
   function menuConfig(menuService) {
+    //  Titulo del dropdown a desplegarse
     menuService.addMenuItem('topbar', {
       title: 'Articles',
       state: 'articles',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['user']
     });
 
-    // Add the dropdown list item
+    // Items del dropdown
     menuService.addSubMenuItem('topbar', 'articles', {
       title: 'List Articles',
-      state: 'articles.list',
-      roles: ['*']
+      state: 'admin.articles.list',
+      roles: ['user']
     });
+
+    menuService.addSubMenuItem('topbar', 'articles', {
+      title: 'Create new Article',
+      state: 'admin.articles.create',
+      roles: ['user']
+    });    
   }
 }());

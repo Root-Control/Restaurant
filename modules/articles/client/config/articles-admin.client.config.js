@@ -10,8 +10,12 @@
 
   function menuConfig(Menus) {
     Menus.addSubMenuItem('topbar', 'admin', {
-      title: 'Manage Articles',
+      title: 'See all Articles',
       state: 'admin.articles.list'
     });
+    Menus.addSubMenuItem('topbar', 'admin', {
+      title: 'Create new Article',
+      state: 'admin.articles.create'
+    });    
   }
 }());

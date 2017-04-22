@@ -12,6 +12,7 @@ acl = new acl(new acl.memoryBackend());
  * Invoke Articles Permissions
  */
 exports.invokeRolesPolicies = function () {
+  //  Admin con permisos post, get, put del
   acl.allow([{
     roles: ['admin'],
     allows: [{
@@ -22,13 +23,14 @@ exports.invokeRolesPolicies = function () {
       permissions: '*'
     }]
   }, {
+    //  User con permisos get, post -> ver y crear y con middleware solo get y put (no borra);
     roles: ['user'],
     allows: [{
       resources: '/api/articles',
-      permissions: ['get']
+      permissions: ['get', 'post']
     }, {
       resources: '/api/articles/:articleId',
-      permissions: ['get']
+      permissions: ['get', 'put']
     }]
   }, {
     roles: ['guest'],

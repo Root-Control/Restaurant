@@ -13,9 +13,10 @@
     //  vm.article verifica si hay algun id de algun articulo.
     vm.article = articleResolve;
     vm.authentication = Authentication;
+    vm.rol = vm.authentication.user.roles[0];
 
     // Eliminar articulo existente
-    vm.eliminar = function() {
+    vm.remove = function() {
       if ($window.confirm('Estás seguro de querer eliminar este item?')) {
         vm.article.$remove(function() {
           $state.go('admin.articles.list');
@@ -25,7 +26,7 @@
     };
 
     // Guardar Articulo
-    vm.guardar = function(isValid) {
+    vm.save = function(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.articleForm');
         return false;

@@ -3,12 +3,12 @@
     <h1>{{vm.article._id ? 'Edit Article' : 'New Article'}}</h1>
   </div>
   <div class="pull-right">
-    <a ng-show="vm.article._id" class="btn btn-primary" ng-click="vm.remove()">
+    <a ng-show="vm.article._id && vm.rol == 'admin'" class="btn btn-primary" ng-click="vm.remove()">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
   <div class="col-md-12">
-    <form name="vm.form.articleForm" class="form-horizontal" ng-submit="vm.guardar(vm.form.articleForm.$valid)" novalidate>
+    <form name="vm.form.articleForm" class="form-horizontal" ng-submit="vm.save(vm.form.articleForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label" for="title">Title</label>
