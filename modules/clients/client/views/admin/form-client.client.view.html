@@ -1,0 +1,86 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.client._id ? 'Editar Cliente' : 'Registra rnuevo cliente'}}</h1>
+  </div>
+  <div class="pull-right">
+    <a ng-show="vm.client._id && vm.rol == 'admin'" class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.clientForm" class="form-horizontal" ng-submit="vm.save(vm.form.clientForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="firstName">Nombres</label>
+          <input name="firstName" type="text" ng-model="vm.client.firstName" id="firstName" class="form-control" placeholder="Ejm: Juan José" required autofocus>
+          <div ng-messages="vm.form.clientForm.firstName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Los nombres son obligatorios.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="lastName">Apellidos</label>
+          <input name="lastName" type="text" ng-model="vm.client.lastName" id="lastName" class="form-control" placeholder="Ejm: Ramirez López" required autofocus>
+          <div ng-messages="vm.form.clientForm.lastName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Los apellidos son obligatorios</p>
+          </div>
+        </div>        
+
+        <div class="form-group" show-errors>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" ng-model="vm.client.email" placeholder="Email" lowercase required>
+          <div ng-messages="vm.clientForm.email.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El correo es obligatorio.</p>
+            <p class="help-block error-text" ng-message="email">El email que ingresaste es inválido.</p>
+          </div>
+        </div> 
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="birthDate">Fecha de nacimiento</label>
+          <input name="birthDate" type="text" ng-model="vm.client.birthDate" id="birthDate" class="form-control" placeholder="Ejm: 25/04/1991" required autofocus>
+          <div ng-messages="vm.form.clientForm.birthDate.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Por favor indica tu fecha de nacimiento</p>
+          </div>
+        </div> 
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="clientType">Tipo de cliente</label>
+          <select class="form-control" name="clientType" ng-model="vm.client.clientType" id="clientType"  required autofocus>
+            <option value="" selected disabled> --Seleccione--</option>
+            <option value="Cliente">Cliente</option>
+            <option value="Empresa">Empresa</option>
+          </select>
+          <div ng-messages="vm.form.clientForm.clientType.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Elige el tipo de cliente</p>
+          </div>
+        </div>
+
+        <div class="form-group" ng-show="vm.client.clientType == 'Empresa'">
+          <label class="control-label" for="legalName">Razón Social</label>
+          <input name="legalName" type="text" ng-model="vm.client.legalName" id="legalName" class="form-control" placeholder="Ejm: Aventureworks EIRL" autofocus>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="rucOrDni">Ruc o Dni</label>
+          <input name="rucOrDni" type="text" ng-model="vm.client.rucOrDni" id="rucOrDni" class="form-control" placeholder="Ejm: Aventureworks EIRL" required autofocus>
+          <div ng-messages="vm.form.clientForm.rucOrDni.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Indica tu razón social o Dni</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="phoneNumber">Teléfono</label>
+          <input name="phoneNumber" type="text" ng-model="vm.client.phoneNumber" id="phoneNumber" class="form-control" placeholder="Ejm: 2590386" required autofocus>
+          <div ng-messages="vm.form.clientForm.phoneNumber.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Por favor indica tu numero telefónico</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.client._id ? 'Actualizar' : 'Crear'}}</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+</section>
