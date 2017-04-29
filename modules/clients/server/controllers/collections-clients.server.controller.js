@@ -41,3 +41,17 @@ exports.list = function (req, res) {
     }
   });
 };
+
+//  List Clients by Regex
+exports.getClientsByText = function(req, res) {
+  var text = req.body.text;
+  Client.find({ fullName: new RegExp(text, 'i') }).sort('-created').populate('user', 'displayName').exec(function (err, clients) {
+    if (err) {
+      return res.status(422).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(clients);
+    }
+  });
+};

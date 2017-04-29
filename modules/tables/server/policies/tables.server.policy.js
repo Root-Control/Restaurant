@@ -1,0 +1,74 @@
+'use strict';
+
+/**
+ * Module dependencies
+ */
+var acl = require('acl');
+
+// Using the memory backend
+acl = new acl(new acl.memoryBackend());
+
+/**
+ * Invoke Tables Permissions
+ */
+exports.invokeRolesPolicies = function () {
+  //  Admin con permisos post, get, put del
+  acl.allow([{
+    roles: ['admin'],
+    allows: [{
+      resources: '/api/tables',
+      permissions: '*'
+    }, {
+      resources: '/api/tables/:tableId',
+      permissions: '*'
+    }]
+  }, {
+    //  User con permisos get, post -> ver y crear y con middleware solo get y put (no borra);
+    roles: ['user'],
+    allows: [{
+      resources: '/api/tables',
+      permissions: ['get', 'post']
+    }, {
+      resources: '/api/tables/:tableId',
+      permissions: ['get', 'put']
+    }]
+  }, {
+    roles: ['guest'],
+    allows: [{
+      resources: '/api/tables',
+      permissions: ['get']
+    }, {
+      resources: '/api/tables/:tableId',
+      permissions: ['get']
+    }]
+  }]);
+};
+
+/**
+ * Check If Tables Policy Allows
+ */
+exports.isAllowed = function (req, res, next) {
+  var roles = (req.user) ? req.user.roles : ['guest'];
+
+  // If an table is being processed and the current user created it then allow any manipulation
+  if (req.table && req.user && req.table.user && req.table.user.id === req.user.id) {
+    return next();
+  }
+
+  // Check for user roles
+  acl.areAnyRolesAllowed(roles, req.route.path, req.method.toLowerCase(), function (err, isAllowed) {
+    if (err) {
+      // An authorization error occurred
+      return res.status(500).send('Unexpected authorization error');
+    } else {
+      if (isAllowed) {
+        // Access granted! Invoke next middleware
+        return next();
+      } else {
+        return res.status(403).json({
+          message: 'User is not authorized'
+        });
+      }
+    }
+  });
+};

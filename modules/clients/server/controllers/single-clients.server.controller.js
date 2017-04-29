@@ -25,7 +25,6 @@ exports.read = function (req, res) {
  */
 exports.update = function (req, res) {
   var client = req.client;
-
   client.firstName = req.body.firstName;
   client.lastName = req.body.lastName;
   client.email = req.body.email;

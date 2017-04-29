@@ -1,7 +1,7 @@
 ﻿<section>
   <div class="page-header">
     <h1>
-      Clients
+      Clientes
       <a class="btn btn-primary pull-right" data-ui-sref="admin.clients.create">
         <i class="glyphicon glyphicon-plus"></i>
       </a>
@@ -13,11 +13,11 @@
         Posted on
         <span data-ng-bind="client.created | date:'mediumDate'"></span>
         by
-        <span ng-if="client.user" ng-bind="client.user.displayName"></span>
+        <span ng-if="client.user" ng-bind="client.user.fullName"></span>
         <span ng-if="!client.user">Deleted User</span>
       </small>
-      <h4 class="list-group-item-heading" data-ng-bind="client.title"></h4>
-      <p class="list-group-item-text" data-ng-bind="client.content"></p>
+      <h4 class="list-group-item-heading" data-ng-bind="client.firstName"></h4>
+      <p class="list-group-item-text" data-ng-bind="client.lastName"></p>
     </a>
   </div>
   <div class="alert alert-warning text-center" data-ng-if="clients.$resolved && !clients.length">

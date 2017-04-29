@@ -13,6 +13,9 @@ module.exports = function (app) {
     .get(clients_collections.list)
     .post(clients_collections.create);
 
+  app.route('/api/client/search')
+    .post(clients_collections.getClientsByText);
+
   // Single client routes
   app.route('/api/clients/:clientId').all(clientsPolicy.isAllowed)
     .get(clients_single.read)

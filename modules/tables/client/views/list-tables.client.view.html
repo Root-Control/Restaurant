@@ -1,0 +1,18 @@
+<section>
+  <div class="page-header">
+    <h1>Tables</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="table in vm.tables" ui-sref="tables.view({ tableId: table._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="table.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="table.user" ng-bind="table.user.displayName"></span>
+        <span ng-if="!table.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="table.title"></h4>
+      <p class="list-group-item-text" ng-bind="table.content"></p>
+    </a>
+  </div>
+</section>

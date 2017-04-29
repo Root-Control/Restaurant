@@ -31,6 +31,7 @@
         $scope.$broadcast('show-errors-check-validity', 'vm.form.clientForm');
         return false;
       }
+      vm.client.points = 20000;
       // Creamos un nuevo cliente o actualizamos si existe
       vm.client.createOrUpdate()
         .then(successCallback)
