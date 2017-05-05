@@ -6,13 +6,6 @@
       "salary": "$320,800",
       "start_date": "2011/04/25",
       "office": "Edinburgh"
-    },
-    {
-      "name": "Cara Stevens",
-      "position": "Sales Assistant",
-      "salary": "$145,600",
-      "start_date": "2011/12/06",
-      "office": "New York"
     }
   ]
 }
