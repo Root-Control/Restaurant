@@ -5,16 +5,14 @@
       "position": "System Architect",
       "salary": "$320,800",
       "start_date": "2011/04/25",
-      "office": "Edinburgh",
-      "extn": "5421"
+      "office": "Edinburgh"
     },
     {
       "name": "Cara Stevens",
       "position": "Sales Assistant",
       "salary": "$145,600",
       "start_date": "2011/12/06",
-      "office": "New York",
-      "extn": "3990"
+      "office": "New York"
     }
   ]
 }
